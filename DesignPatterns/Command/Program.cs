@@ -7,9 +7,9 @@ internal class Program
     {
         Console.WriteLine("Command pattern");
 
-        Dimmer dimser = new Dimmer();
+        Handler thisHandler = new Handler();
 
-        dimser.AddCommands();
+        thisHandler.AddCommands();
 
         bool running = true;
 
@@ -17,24 +17,30 @@ internal class Program
         {
             string message = Console.ReadLine().ToLower();
 
-            if (message == null || message=="")
+            if (message == null || message == "")
             {
                 running = false;
             }
-
-            dimser.RunDutter(message);
-
+            else
+            {
+                thisHandler.RunDutter(message);
+            }
         }
     }
 
-
-    class Dimmer
+    /// <summary>
+    /// Handler like a input handler
+    /// </summary>
+    class Handler
     {
         #region Fields
         private Dictionary<string, ICommand> commands = new Dictionary<string, ICommand>();
-
-
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
         internal void RunDutter(string message)
         {
             if (commands.ContainsKey(message))
@@ -47,6 +53,9 @@ internal class Program
             }
         }
 
+        /// <summary>
+        /// Adding the key and command into commands
+        /// </summary>
         internal void AddCommands()
         {
             commands.Add("s", new ShootCommand());

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Command
 {
+    /// <summary>
+    /// Interface for Command
+    /// </summary>
     public interface ICommand
     {
         public void Execute();

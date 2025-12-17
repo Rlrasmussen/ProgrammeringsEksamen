@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Command
 {
+    /// <summary>
+    /// Shoot command which write "Phew phew"
+    /// </summary>
     public class ShootCommand : ICommand
     {
         public void Execute()
@@ -14,6 +17,9 @@ namespace Command
         }
     }
 
+    /// <summary>
+    /// Dodge command which write "Dogde"
+    /// </summary>
     public class DogdeCommand : ICommand
     {
         public void Execute()
