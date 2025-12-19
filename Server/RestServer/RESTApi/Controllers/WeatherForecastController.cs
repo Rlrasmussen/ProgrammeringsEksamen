@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SharedLibrary;
 
 namespace RESTApi.Controllers
 {
@@ -11,12 +12,35 @@ namespace RESTApi.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private const string dataDirectory = "tmp";
+        private static readonly string serverPrivateKey, serverPublicKey, usersFile = dataDirectory + "/users.json";
+        private static readonly object fileLock = new object();
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        static WeatherForecastController()
         {
-            _logger = logger;
+
+            lock (fileLock)
+            {
+                if (!Directory.Exists(dataDirectory))
+                {
+                    Directory.CreateDirectory(dataDirectory);
+                }
+
+                if (!System.IO.File.Exists(usersFile))
+                {
+                    System.IO.File.WriteAllText("[]", usersFile); //Opretter ny
+                }
+            }
         }
+
+        #region Deleted
+        //private readonly ILogger<WeatherForecastController> _logger;
+
+        //public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        //{
+        //    _logger = logger;
+        //}
+        #endregion
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
@@ -28,6 +52,13 @@ namespace RESTApi.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+
+        [HttpHead("Heartbeat")]
+        public ActionResult Ping()
+        {
+            return Ok();
         }
     }
 }
