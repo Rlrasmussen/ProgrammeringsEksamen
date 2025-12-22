@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrototypePattern
 {
-    public class GameObject
+    public class GameObject : ICloneable
     {
         public int health;
         public int speed;
@@ -28,6 +28,17 @@ namespace PrototypePattern
             coby = new GameObject();
 
             return coby;
+        }
+
+        public object Clone()
+        {
+            //throw new NotImplementedException();
+
+            //Console.WriteLine("This clone is a Shallow Copy");
+            //return ShallowCopy();
+
+            Console.WriteLine("This clone is a Deep Copy");
+            return DeepCopy();
         }
     }
 }

@@ -9,7 +9,7 @@
             Console.WriteLine($"go color is {go.Color}");
 
             //Shallow copy
-            GameObject goShallow = go.ShallowCopy();
+            GameObject goShallow = (GameObject)go.Clone();
             //Console.WriteLine($"goShallow color is {goShallow.Color}");
 
             //Changing color Shallow Copy//
@@ -24,7 +24,7 @@
             Console.WriteLine($"goShallow color is {goShallow.Color}"); */
 
             //Deep Copy
-            GameObject goDeep = go.DeepCopy();
+            GameObject goDeep = (GameObject)go.Clone();
             Console.WriteLine($"goShallow color is {goDeep.Color} /n");
 
 
