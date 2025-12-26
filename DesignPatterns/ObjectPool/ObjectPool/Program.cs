@@ -6,7 +6,11 @@
         {
             Console.WriteLine("Hello, World!");
 
-EnemyPool.Instance.GetObject();
+            Console.WriteLine(EnemyPool.Instance.GetObject().Number);
+            Console.WriteLine(EnemyPool.Instance.GetObject().Number);
+            Console.WriteLine(EnemyPool.Instance.GetObject().Number);
+            Console.WriteLine(EnemyPool.Instance.GetObject().Number);
+
 
         }
     }

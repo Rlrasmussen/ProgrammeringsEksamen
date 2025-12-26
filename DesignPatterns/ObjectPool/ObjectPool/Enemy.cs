@@ -8,12 +8,11 @@ namespace ObjectPool
 {
     public class Enemy : GameObject
     {
-        private int number;
-        public int Number { get => number; set => number = value; }
+        //private int number;
+        //public int Number { get => number; set => number = value; }
 
-        public Enemy(int number)
+        public Enemy()
         {
-            this.Number = number;
         }
 
     }

@@ -15,19 +15,22 @@ namespace ObjectPool
         {
         }
 
-        public static EnemyPool Instance {
-            get 
+        public static EnemyPool Instance
+        {
+            get
             {
                 if (instance == null)
                 {
                     instance = new EnemyPool();
                 }
                 return instance;
-            }  
+            }
         }
 
 
         #endregion
+
+        private int number = 0;
 
         protected override void CleanUp(GameObject obj)
         {
@@ -39,9 +42,10 @@ namespace ObjectPool
 
         protected override GameObject Create()
         {
-            Random rnd = new Random();
-            
-            return new Enemy(rnd.Next(1, 31));
+            Enemy newEnemy = new Enemy();
+            newEnemy.Number = number;
+            number++;
+            return newEnemy;
         }
     }
 }
