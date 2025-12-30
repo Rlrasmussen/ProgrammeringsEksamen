@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    public interface IEnumerable
+    public interface IEnumerable<T>
     {
-        public IEnumerator GetEnumerator();
+        public IEnumerator<T> GetEnumerator();
     }
 }

@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    public class MyLinkedList : IEnumerable
+    public class MyLinkedList<T> : IEnumerable<T>
     {
         #region Field
 
         #endregion
 
         #region Properties
-        public Node First { get; set; }
-        public Node Last { get; set; }
+        public Node<T> First { get; set; }
+        public Node<T> Last { get; set; }
 
         #endregion
 
         #region Method
 
-        public Node AddFirst(object value)
+        public void AddFirst(T element)
         {
-            Node n = new Node(value);
+            Node<T> n = new Node<T>(element);
 
             if (First == null)
             {
@@ -36,12 +36,11 @@ namespace LinkedList
                 First = n;
             }
 
-            return n;
         }
 
-        public Node AddLast(object value)
+        public void AddLast(T value)
         {
-            Node n = new Node(value);
+            Node<T> n = new Node<T>(value);
 
             if (First == null)
             {
@@ -54,13 +53,12 @@ namespace LinkedList
                 Last = n;
             }
 
-            return n;
         }
 
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            Node current = First;
+            Node<T> current = First;
 
             while (current != null)
             {

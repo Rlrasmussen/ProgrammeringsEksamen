@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    public class Node
+    public class Node<T>
     {
         //The Node's value
-        public object NodeValue { get; set; }
+        public T NodeValue { get; set; }
         //The next Node
-        public Node Next { get; set; }
+        public Node<T> Next { get; set; }
         //The previous Node
-        public Node Previous { get; set; }
+        public Node<T> Previous { get; set; }
 
-        public Node(object nodeValue)
+        public Node(T nodeValue)
         {
             this.NodeValue = nodeValue;
         }
