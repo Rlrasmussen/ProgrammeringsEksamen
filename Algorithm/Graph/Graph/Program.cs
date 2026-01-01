@@ -9,7 +9,7 @@
             myGraph.AddNode("Kage");
             myGraph.AddNode("Mand");
 
-            myGraph.AddEdge("Kage", "Dame");
+            myGraph.AddEdge("Kage", "Mand");
 
         }
     }

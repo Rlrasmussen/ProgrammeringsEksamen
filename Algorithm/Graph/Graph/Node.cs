@@ -11,7 +11,7 @@ namespace Graph
         #region field
         private T data;
         private List<Edge<T>> edges = new List<Edge<T>>();
-        //private bool discovered = false;
+        private bool discovered = false;
         private Node<T> parent;
         private float weight;
 
@@ -20,7 +20,7 @@ namespace Graph
         #region properties
         internal List<Edge<T>> Edges { get => edges; private set => edges = value; }
         public T Data { get => data; private set => data = value; }
-        //public bool Discovered { get => discovered; set => discovered = value; }
+        public bool Discovered { get => discovered; set => discovered = value; }
         internal Node<T> Parent { get => parent; set => parent = value; }
         public float Weight { get => weight; set => weight = value; }
 

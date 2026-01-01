@@ -11,6 +11,7 @@ namespace Graph
         #region field
         private List<Node<T>> nodes = new List<Node<T>>();
 
+
         #endregion
 
         #region properties
@@ -19,6 +20,7 @@ namespace Graph
         #endregion
 
         #region constructor
+
 
         #endregion
 
@@ -35,11 +37,12 @@ namespace Graph
         /// <param name="to"></param>
         public void AddDirectedEdge(T from, T to, float weight = 1)
         {
-            Node<T> fromNode = Nodes.Find(x => x.Data.Equals(from));
-            Node<T> toNode = Nodes.Find(x => x.Data.Equals(to));
+            Node<T> fromNode = Nodes.Find(x => EqualityComparer<T>.Default.Equals(x.Data, from));
+            Node<T> toNode = Nodes.Find(x => EqualityComparer<T>.Default.Equals(x.Data, to));
 
             //Adding a edge between (start) fromNode to (end) toNode
-            if (!fromNode.Equals(default(T)) && !toNode.Equals(default(T)))
+            //if (!fromNode.Equals(default(T)) && !toNode.Equals(default(T)))
+            if (fromNode != null && toNode != null)
             {
                 fromNode.AddEdge(toNode, weight);
             }
