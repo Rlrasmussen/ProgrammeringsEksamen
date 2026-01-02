@@ -20,11 +20,17 @@ namespace Astar
             }
 
             //Unwaklabel
-            grid[3, 0].Walkabel = false;
-            grid[3, 1].Walkabel = false;
-            grid[3, 3].Walkabel = false;
-            grid[3, 4].Walkabel = false;
-            grid[3, 5].Walkabel = false;
+            //grid[3, 0].Walkabel = false;
+            //grid[3, 1].Walkabel = false;
+            //grid[3, 3].Walkabel = false;
+            //grid[3, 4].Walkabel = false;
+            //grid[3, 5].Walkabel = false;
+
+            Random random = new Random();
+            for (int i = 0; i < 20; i++)
+            {
+                grid[random.Next(0, 10), random.Next(0, 10)].Walkabel = false;
+            }
 
             //Adding edges
             //Coodinate of the neighbors
@@ -79,18 +85,15 @@ namespace Astar
 
             PrintGrid(grid, aStarPath, start, goal);
 
-
-            //Console.WriteLine("Hello, World!");
         }
 
         public static void PrintGrid(Node<Vector2>[,] grid, List<Node<Vector2>> path, Node<Vector2> start, Node<Vector2> goal)
         {
-            //            Symbol Betydning
-            //.	Walkable node
-            //#	Væg (Walkable = false)
-            //S Start
-            //G Goal
-            //*Path
+            Console.WriteLine(". = walkabel\n" +
+                "# = wall\n" +
+                "S = start\n" +
+                "G = goal\n" +
+                "* = path\n");
 
             int width = grid.GetLength(0);
             int height = grid.GetLength(1);
@@ -108,8 +111,13 @@ namespace Astar
                     else if (!node.Walkabel)
                         Console.Write("# ");
                     else if (path != null && path.Contains(node))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("* ");
+                    }
                     else Console.Write(". ");
+
+                    Console.ResetColor();
                 }
                 
                 //Next line
