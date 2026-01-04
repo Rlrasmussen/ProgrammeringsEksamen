@@ -7,9 +7,8 @@
             //Creates a thread
             Thread myThread = new Thread(ThreadWork);
             myThread.IsBackground = true;
-
-            //Starts the thread
             myThread.Start();
+
 
             //Starts the thread with parameters
             Thread parameterThread = new Thread(ThreadWithParameters);
@@ -18,10 +17,17 @@
             parameterThread.Start(message);
 
 
+            //Starts the thread with parameters by using a lambda expression
+            Thread parameterLambdaThread = new Thread(() => ThreadWithParameters(message + " by using lambda"));
+            parameterLambdaThread.IsBackground = true;
+            parameterLambdaThread.Start();
+
+
             //Thread with Sleep()
             Thread sleepThread = new Thread(ThreadSleep);
             sleepThread.IsBackground = true;
             sleepThread.Start();
+
 
             //Thread with Sleep() loop 4
             Thread sleepThread4 = new Thread(ThreadSleep4);
@@ -29,10 +35,6 @@
             sleepThread4.Start();
 
 
-            //Starts the thread with parameters by using a lambda expression
-            Thread parameterLambdaThread = new Thread(() => ThreadWithParameters(message + " by using lambda"));
-            parameterLambdaThread.IsBackground = true;
-            parameterLambdaThread.Start();
 
             Console.WriteLine("This is the main thread");
         }
